@@ -28,7 +28,7 @@ Cálculo de Imposto de Renda). -->
     <input type="text" name="txtA" id="txtA">
     
     <button onclick="cadInfo(txtA.value)">Click me</button>
-    <button onclick="cadInfo()">Last remove</button>
+    <button onclick="cadInfo()">Remover</button>
 </div>
 <br>
 <br>
@@ -46,6 +46,20 @@ Cálculo de Imposto de Renda). -->
         </tr>
     </table>
 </div>
+
+
+    
+<div class="input">
+    <h1>Conversor Brasileiro de R$ para $</h1>
+    <h5>Use ponto (.)</h5>
+    <label >Digite em R$:</label>
+    <input type="text" id="valor">
+    <button id="calcular" >Calcular</button>
+    <div><b>$</b></div><div class="result" id="resultado"></div>
+
+
+</div>
+
 <style>
     #re {
        font: 14px Verdana; 
@@ -57,23 +71,41 @@ Cálculo de Imposto de Renda). -->
 
 <script type="text/javascript">
     function cadInfo (texto) {
-    var tb = document.getElementById("tabela");
-    var qtdLinhas = tb.rows.length;
-    var linha = tb.insertRow(qtdLinhas);
 
-//     var cellCodigo = linha.insertCell(0);
-//     var cellTexto = linha.insertCell(1);
+        var tb = document.getElementById("tabela");
+        var qtdLinhas = tb.rows.length;
+        var linha = tb.insertRow(qtdLinhas);
 
-//    cellCodigo.innerHTML = qtdLinhas;
-//     cellTexto.innerHTML = texto;
-
-    var cellCodigo = linha.insertCell(0);
-    //var cellTexto = linha.insertCell(1);
-
-   cellCodigo.innerHTML = texto;
+        var cellCodigo = linha.insertCell(0);
+        
+        cellCodigo.innerHTML = texto;
     
 
-}
+    }
+    
+    
+    const calcular = document.getElementById('calcular');
+    
+
+    function imc(){
+        const numero = document.getElementById('valor').value;
+        const resultado = document.getElementById('resultado');
+        //alert ('test click');
+        if (numero !== ''){
+            //alert ('ora ora temos conteudo')
+            const valorDollar = numero / 5.12;
+
+            resultado.textContent = valorDollar;
+        }else{
+            resultado.textContent = 'Deve preencher o campo!!!!';
+        }
+
+    }
+
+    calcular.addEventListener('click', imc);
+    //alert(numero);
+
+    //numero.value = "alou";
 </script>
 
 </body>
